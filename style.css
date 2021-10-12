@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: cornflowerblue;
+}
 .jumbotron {
   padding-top: 6rem;
   background-color: #e4f0ff;
@@ -7,10 +13,104 @@
   background-color: #e4f0ff;
 }
 
-footer {
-  padding-bottom: 1rem;
+#contact {
+  background-color: white;
+}
+#about {
+  background-color: white;
 }
 
 section {
   padding-top: 5rem;
+}
+
+.card {
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.card:hover {
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+  transform: translate(-10px, -10px);
+  transition: 300ms;
+}
+
+.card-img-top {
+  border-radius: 20px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+.nav-link:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.nav-link:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.navbar-brand {
+  letter-spacing: 5px;
+  padding: 10px;
+  border: solid;
+  border-radius: 10px;
+}
+
+.navbar-brand:hover {
+  box-shadow: 0px 0px 10px 5px #71faca;
+  transition: 500ms;
+}
+
+.bi {
+  font-size: 24px;
+  border-radius: 12px;
+  padding: 7px 10px;
+}
+
+.bi-instagram {
+  background-color: #fce2b6;
+  color: #ecac00;
+}
+
+.bi-linkedin {
+  background-color: #dfe0df;
+  color: #7c949c;
+}
+
+.bi-github {
+  background-color: #f9c0c0;
+  color: #f38686;
+}
+
+.bi-instagram:hover {
+  color: #fce2b6;
+  background-color: #ecac00;
+  transition: 500ms;
+}
+
+.bi-linkedin:hover {
+  color: #dfe0df;
+  background-color: #7c949c;
+  transition: 500ms;
+}
+
+.bi-github:hover {
+  color: #f9c0c0;
+  background-color: #f38686;
+  transition: 500ms;
 }
