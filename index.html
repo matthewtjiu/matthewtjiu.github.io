@@ -145,22 +145,31 @@
             <h2>Contact Me</h2>
           </div>
         </div>
+        <div class="alert alert-success alert-dismissible fade show d-none alert-berhasil" role="alert">
+          <strong>Thank you!</strong> the form was submitted successfully
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
         <div class="row justify-content-center">
           <div class="col-md-4">
-            <form>
+            <form name="matthew-portofolio-contact-form">
               <div class="mb-3">
                 <label for="name" class="form-label">Fullname</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" />
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="name" />
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" />
+                <input type="email" class="form-control" id="email" aria-describedby="email" name="email" />
               </div>
               <div class="mb-3">
                 <label for="comments" class="form-label">Comments</label>
-                <textarea class="form-control" placeholder="Leave a comment here" id="comments" style="height: 150px"></textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="comments" style="height: 150px" name="message"></textarea>
               </div>
-              <button type="submit" class="btn btn-dark border-0 mb-5" style="background-color: cornflowerblue">Submit</button>
+              <button type="submit" class="btn btn-dark border-0 mb-5 btn-kirim" style="background-color: cornflowerblue">Submit</button>
+              <button class="btn btn-dark d-none border-0 mb-5 btn-loading" style="background-color: cornflowerblue" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
             </form>
           </div>
         </div>
@@ -185,5 +194,27 @@
     <!-- Akhir Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzaMdJLnz_Pai2t2HDh__mIJTT8SYkFdzIZxVwagrlPY5ADPCigNJ2Zun8ReirY4Ncc/exec";
+      const form = document.forms["matthew-portofolio-contact-form"];
+      const btnKirim = document.querySelector(".btn-kirim");
+      const btnLoading = document.querySelector(".btn-loading");
+      const alertSuccess = document.querySelector(".alert-berhasil");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        btnLoading.classList.toggle("d-none");
+        btnKirim.classList.toggle("d-none");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            btnLoading.classList.toggle("d-none");
+            btnKirim.classList.toggle("d-none");
+            alertSuccess.classList.toggle("d-none");
+            form.reset();
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
